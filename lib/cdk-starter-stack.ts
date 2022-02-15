@@ -5,7 +5,7 @@ import * as lambda from '@aws-cdk/aws-lambda';
 import {NodejsFunction} from '@aws-cdk/aws-lambda-nodejs';
 import * as cdk from '@aws-cdk/core';
 import * as path from 'path';
-import {SES_EMAIL_FROM, SES_REGION} from '../env';
+import {SES_EMAIL_FROM,SES_EMAIL_TO, SES_REGION} from '../env';
 
 if (!SES_EMAIL_FROM || !SES_REGION) {
   throw new Error(
@@ -39,6 +39,9 @@ export class CdkStarterStack extends cdk.Stack {
           `arn:aws:ses:${SES_REGION}:${
             cdk.Stack.of(this).account
           }:identity/${SES_EMAIL_FROM}`,
+          `arn:aws:ses:${SES_REGION}:${
+            cdk.Stack.of(this).account
+          }:identity/${SES_EMAIL_TO}`,
         ],
       }),
     );

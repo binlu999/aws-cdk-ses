@@ -55,7 +55,7 @@ async function sendEmail({
 function sendEmailParams({name, email, message}: ContactDetails) {
   return {
     Destination: {
-      ToAddresses: [SES_EMAIL_TO],
+      ToAddresses: [email],
     },
     Message: {
       Body: {
